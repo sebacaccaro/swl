@@ -1,0 +1,30 @@
+begin
+    let a be 5
+    let b be 10
+    add 3 to b
+    add b to a
+    mul a by 4
+    div a by 4
+    mul a by b
+    if a > b then
+    begin
+       add a to b
+    end
+    else
+    begin
+      add b to a
+      if a =/= b then
+      begin
+         print a
+      end
+    end
+
+    while a > b do
+    begin
+      add 1 to b
+    end
+
+    add a to b
+    print b
+    print 3
+end
