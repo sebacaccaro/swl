@@ -14,10 +14,25 @@ div       : 'div' ID 'by' (NUMBER | ID) ;
 ifcond	  : 'if' fullcond 'then' codeblock ('else' program)? ;
 whileloop : 'while' fullcond 'do' codeblock ;
 
-condition : (ID|NUMBER) ('<'|'>'|'<='|'>='|'=='|'=/=') (ID|NUMBER) ;
-multicond : ('not')* condition (('and'|'or') ('not')* condition)* ;
-parcond   : ('not')* ( multicond | '(' multicond ')' ) ;
-fullcond  : parcond ( ('and'|'or') parcond )* ;
+condition : (ID|NUMBER) (lt|mt|le|me|eq|di) (ID|NUMBER) ;
+multicond : (notS)* condition ((andS|orS) (notS)* condition)* ;
+parcond   : (notS)* ( multicond | op multicond cp ) ;
+fullcond  : parcond ( (andS|orS) parcond )* ;
+
+andS       : 'and' ;
+orS        : 'or' ;
+notS       : 'not' ;
+
+op        : '(' ;
+cp        : ')' ;
+
+lt        : '<' ;
+mt        : '>' ;
+le        : '<=' ;
+me        : '>=' ;
+eq        : '==' ;
+di        : '=/=' ;
+
 
 ID        : [a-z]+ ;
 NUMBER    : [0-9]+ ;

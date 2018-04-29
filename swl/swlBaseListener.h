@@ -19,6 +19,9 @@ public:
   virtual void enterProgram(swlParser::ProgramContext * /*ctx*/) override { }
   virtual void exitProgram(swlParser::ProgramContext * /*ctx*/) override { }
 
+  virtual void enterCodeblock(swlParser::CodeblockContext * /*ctx*/) override { }
+  virtual void exitCodeblock(swlParser::CodeblockContext * /*ctx*/) override { }
+
   virtual void enterStatement(swlParser::StatementContext * /*ctx*/) override { }
   virtual void exitStatement(swlParser::StatementContext * /*ctx*/) override { }
 
@@ -54,6 +57,39 @@ public:
 
   virtual void enterFullcond(swlParser::FullcondContext * /*ctx*/) override { }
   virtual void exitFullcond(swlParser::FullcondContext * /*ctx*/) override { }
+
+  virtual void enterAndS(swlParser::AndSContext * /*ctx*/) override { }
+  virtual void exitAndS(swlParser::AndSContext * /*ctx*/) override { }
+
+  virtual void enterOrS(swlParser::OrSContext * /*ctx*/) override { }
+  virtual void exitOrS(swlParser::OrSContext * /*ctx*/) override { }
+
+  virtual void enterNotS(swlParser::NotSContext * /*ctx*/) override { }
+  virtual void exitNotS(swlParser::NotSContext * /*ctx*/) override { }
+
+  virtual void enterOp(swlParser::OpContext * /*ctx*/) override { }
+  virtual void exitOp(swlParser::OpContext * /*ctx*/) override { }
+
+  virtual void enterCp(swlParser::CpContext * /*ctx*/) override { }
+  virtual void exitCp(swlParser::CpContext * /*ctx*/) override { }
+
+  virtual void enterLt(swlParser::LtContext * /*ctx*/) override { }
+  virtual void exitLt(swlParser::LtContext * /*ctx*/) override { }
+
+  virtual void enterMt(swlParser::MtContext * /*ctx*/) override { }
+  virtual void exitMt(swlParser::MtContext * /*ctx*/) override { }
+
+  virtual void enterLe(swlParser::LeContext * /*ctx*/) override { }
+  virtual void exitLe(swlParser::LeContext * /*ctx*/) override { }
+
+  virtual void enterMe(swlParser::MeContext * /*ctx*/) override { }
+  virtual void exitMe(swlParser::MeContext * /*ctx*/) override { }
+
+  virtual void enterEq(swlParser::EqContext * /*ctx*/) override { }
+  virtual void exitEq(swlParser::EqContext * /*ctx*/) override { }
+
+  virtual void enterDi(swlParser::DiContext * /*ctx*/) override { }
+  virtual void exitDi(swlParser::DiContext * /*ctx*/) override { }
 
 
   virtual void enterEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }
