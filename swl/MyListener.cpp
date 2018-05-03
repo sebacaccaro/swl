@@ -99,17 +99,17 @@ void MyListener::enterElseCond(swlParser::ProgramContext *ctx){
 void MyListener::enterC1(swlParser::AddContext *ctx) {
     cout << string(indent, ' ') << ctx->ID(0)->getText() << ' ';
     if(ctx->lt() != NULL)
-        cout << ;
+        cout << "<";
     else if(ctx->mt() != NULL)
-        cout << ;
+        cout << ">";
     else if(ctx->le() != NULL)
-        cout << ;
+        cout << "<=";
     else if(ctx->me() != NULL)
-        cout << ;
+        cout << ">=";
     else if(ctx->eq() != NULL)
-        cout << ;
+        cout << "==";
     else if(ctx->di() != NULL)
-        cout << ;
+        cout << "!=";
 }
 
 void MyListener::exitC1(swlParser::AddContext *ctx) {
