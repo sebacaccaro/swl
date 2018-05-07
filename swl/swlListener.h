@@ -41,11 +41,17 @@ public:
   virtual void enterIfcond(swlParser::IfcondContext *ctx) = 0;
   virtual void exitIfcond(swlParser::IfcondContext *ctx) = 0;
 
+  virtual void enterElsecond(swlParser::ElsecondContext *ctx) = 0;
+  virtual void exitElsecond(swlParser::ElsecondContext *ctx) = 0;
+
   virtual void enterWhileloop(swlParser::WhileloopContext *ctx) = 0;
   virtual void exitWhileloop(swlParser::WhileloopContext *ctx) = 0;
 
-  virtual void enterCondition(swlParser::ConditionContext *ctx) = 0;
-  virtual void exitCondition(swlParser::ConditionContext *ctx) = 0;
+  virtual void enterC1(swlParser::C1Context *ctx) = 0;
+  virtual void exitC1(swlParser::C1Context *ctx) = 0;
+
+  virtual void enterC2(swlParser::C2Context *ctx) = 0;
+  virtual void exitC2(swlParser::C2Context *ctx) = 0;
 
   virtual void enterMulticond(swlParser::MulticondContext *ctx) = 0;
   virtual void exitMulticond(swlParser::MulticondContext *ctx) = 0;

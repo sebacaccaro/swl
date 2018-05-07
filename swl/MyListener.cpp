@@ -10,14 +10,15 @@ void MyListener::enterProgram(swlParser::ProgramContext *ctx) {
          << "int main()" << endl;
 }
 
-void MyListener::enterCodeBlock(swlParser::ProgramContext *ctx) {
+void MyListener::enterCodeblock(swlParser::CodeblockContext *ctx) {
     cout << "{" << endl;
     indent += 4;
 }
 
-void MyListener::exitCodeBlock(swlParser::ProgramContext *ctx) {
-    cout << "}" << endl;
+void MyListener::exitCodeblock(swlParser::CodeblockContext *ctx) {
     indent -= 4;
+    cout << string(indent, ' ') << "}" << endl;
+
 }
 
 void MyListener::exitAssign(swlParser::AssignContext *ctx) {
@@ -39,7 +40,7 @@ void MyListener::exitPrint(swlParser::PrintContext *ctx) {
     } else {
         val = ctx->NUMBER()->getText();
     }
-    cout << string(indent, ' ') << "cout << " << val << " << endl;" << endl;    
+    cout << string(indent, ' ') << "cout << " << val << " << endl;" << endl;
 }
 
 void MyListener::exitAdd(swlParser::AddContext *ctx) {
@@ -56,7 +57,7 @@ void MyListener::exitAdd(swlParser::AddContext *ctx) {
 }
 
 
-void MyListener::exitMul(swlParser::AddContext *ctx) {
+void MyListener::exitMul(swlParser::MulContext *ctx) {
     string name;
     string val;
     if(ctx->ID().size() > 1) {
@@ -70,7 +71,7 @@ void MyListener::exitMul(swlParser::AddContext *ctx) {
 }
 
 
-void MyListener::exitDiv(swlParser::AddContext *ctx) {
+void MyListener::exitDiv(swlParser::DivContext *ctx) {
     string name;
     string val;
     if(ctx->ID().size() > 1) {
@@ -84,69 +85,77 @@ void MyListener::exitDiv(swlParser::AddContext *ctx) {
 }
 
 
-void MyListener::enterWhileLoop(swlParser::ProgramContext *ctx) {
-    cout << "while ";
+void MyListener::enterWhileloop(swlParser::WhileloopContext *ctx) {
+    cout << string(indent, ' ') <<"while";
 }
 
-void MyListener::enterIfCond(swlParser::ProgramContext *ctx){
-    cout << "if ";
+void MyListener::enterIfcond(swlParser::IfcondContext *ctx){
+    cout << string(indent, ' ') << "if";
 }
 
-void MyListener::enterElseCond(swlParser::ProgramContext *ctx){
-    cout << "else ";
+void MyListener::enterElsecond(swlParser::ElsecondContext *ctx){
+    cout << string(indent, ' ') << "else ";
 }
 
-void MyListener::enterC1(swlParser::AddContext *ctx) {
-    cout << string(indent, ' ') << ctx->ID(0)->getText() << ' ';
-    if(ctx->lt() != NULL)
-        cout << "<";
-    else if(ctx->mt() != NULL)
-        cout << ">";
-    else if(ctx->le() != NULL)
-        cout << "<=";
-    else if(ctx->me() != NULL)
-        cout << ">=";
-    else if(ctx->eq() != NULL)
-        cout << "==";
-    else if(ctx->di() != NULL)
-        cout << "!=";
-}
-
-void MyListener::exitC1(swlParser::AddContext *ctx) {
-    if(ctx->ID().size() > 1)
-        cout << string(indent, ' ') << ctx->ID(1)->getText();
-    else
-        cout << string(indent, ' ') << ctx->NUMBER()->getText();
-}
-
-void MyListener::enterC2(swlParser::AddContext *ctx) {
-    cout << string(indent, ' ') << ctx->NUMBER()->getText();
-}
-
-
-void MyListener::exitC2(swlParser::AddContext *ctx) {
-    if(ctx->NUMBER().size() > 1)
-        cout << string(indent, ' ') << ctx->NUMBER(1)->getText();
-    else
-        cout << string(indent, ' ') << ctx->ID(0)->getText();
-}
-
-void MyListener::exitOp(swlParser::AddContext *ctx) {
+void MyListener::enterFullcond(swlParser::FullcondContext *ctx){
     cout << "( ";
 }
 
-void MyListener::exitCp(swlParser::AddContext *ctx) {
+void MyListener::exitFullcond(swlParser::FullcondContext *ctx){
     cout << " )";
 }
 
-void MyListener::exitAndS(swlParser::AddContext *ctx) {
+void MyListener::enterC1(swlParser::C1Context *ctx) {
+    cout << ctx->ID(0)->getText() << ' ';
+    if(ctx->lt() != NULL)
+        cout << "< ";
+    else if(ctx->mt() != NULL)
+        cout << "> ";
+    else if(ctx->le() != NULL)
+        cout << "<= ";
+    else if(ctx->me() != NULL)
+        cout << ">= ";
+    else if(ctx->eq() != NULL)
+        cout << "== ";
+    else if(ctx->di() != NULL)
+        cout << "!= ";
+}
+
+void MyListener::exitC1(swlParser::C1Context *ctx) {
+    if(ctx->ID().size() > 1)
+        cout << ctx->ID(1)->getText();
+    else
+        cout << ctx->NUMBER()->getText();
+}
+
+void MyListener::enterC2(swlParser::C2Context *ctx) {
+    cout << ctx->NUMBER(0)->getText();
+}
+
+
+void MyListener::exitC2(swlParser::C2Context *ctx) {
+    if(ctx->NUMBER().size() > 1)
+        cout << ctx->NUMBER(1)->getText();
+    else
+        cout << ctx->ID()->getText();
+}
+
+void MyListener::exitOp(swlParser::OpContext *ctx) {
+    cout << "( ";
+}
+
+void MyListener::exitCp(swlParser::CpContext *ctx) {
+    cout << " )";
+}
+
+void MyListener::exitAndS(swlParser::AndSContext *ctx) {
     cout << " && ";
 }
 
-void MyListener::exitOrS(swlParser::AddContext *ctx) {
+void MyListener::exitOrS(swlParser::OrSContext *ctx) {
     cout << " || ";
 }
 
-void MyListener::exitNotS(swlParser::AddContext *ctx) {
+void MyListener::exitNotS(swlParser::NotSContext *ctx) {
     cout << " !";
 }

@@ -16,9 +16,9 @@ public:
 
   void enterProgram(swlParser::ProgramContext *ctx);
 
-  void enterCodeBlock(swlParser::ProgramContext *ctx);
+  void enterCodeblock(swlParser::CodeblockContext *ctx);
 
-  void exitCodeBlock(swlParser::ProgramContext *ctx);
+  void exitCodeblock(swlParser::CodeblockContext *ctx);
 
   void exitAssign(swlParser::AssignContext *ctx);
 
@@ -26,32 +26,35 @@ public:
 
   void exitAdd(swlParser::AddContext *ctx);
 
-  void exitDiv(swlParser::AddContext *ctx);
+  void exitDiv(swlParser::DivContext *ctx);
 
-  void exitMul(swlParser::AddContext *ctx);
+  void exitMul(swlParser::MulContext *ctx);
 
-  void enterWhileLoop(swlParser::ProgramContext *ctx);
+  void enterWhileloop(swlParser::WhileloopContext *ctx);
 
-  void enterIfCond(swlParser::ProgramContext *ctx);
+  void enterIfcond(swlParser::IfcondContext *ctx);
 
-  void enterElseCond(swlParser::ProgramContext *ctx);
+  void enterElsecond(swlParser::ElsecondContext *ctx);
 
-  void enterC1(swlParser::AddContext *ctx);
+  void enterFullcond(swlParser::FullcondContext *ctx);
 
-  void exitC1(swlParser::AddContext *ctx);
+  void exitFullcond(swlParser::FullcondContext *ctx);
 
-  void enterC2(swlParser::AddContext *ctx);
+  void enterC1(swlParser::C1Context *ctx);
 
-  void exitC2(swlParser::AddContext *ctx);
+  void exitC1(swlParser::C1Context *ctx);
 
-  void exitOp(swlParser::AddContext *ctx);
+  void enterC2(swlParser::C2Context *ctx);
 
-  void exitCp(swlParser::AddContext *ctx);
+  void exitC2(swlParser::C2Context *ctx);
 
-  void exitAndS(swlParser::AddContext *ctx);
+  void exitOp(swlParser::OpContext *ctx);
 
-  void exitOrS(swlParser::AddContext *ctx);
+  void exitCp(swlParser::CpContext *ctx);
 
-  void exitNotS(swlParser::AddContext *ctx);
+  void exitAndS(swlParser::AndSContext *ctx);
+
+  void exitOrS(swlParser::OrSContext *ctx);
+
+  void exitNotS(swlParser::NotSContext *ctx);
 };
-

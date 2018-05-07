@@ -3,7 +3,7 @@ grammar swl;
 program   :  codeblock ;
 
 codeblock : 'begin' statement+ 'end';
-          
+
 statement : assign | add | mul | div | print | ifcond | whileloop ;
 
 assign    : 'let' ID 'be' (NUMBER | ID) ;
@@ -16,7 +16,7 @@ elsecond  : 'else' codeblock ;
 whileloop : 'while' fullcond 'do' codeblock ;
 
 c1        : (ID) (lt|mt|le|me|eq|di) (ID|NUMBER) ;
-c2        : (NUMBER) (lt|mt|le|me|eq|di) (ID|NUMBER) ;
+c2        : (NUMBER) (lt|mt|le|me|eq|di) (NUMBER|ID) ;
 
 multicond : (notS)* ( c1 | c2 ) ((andS|orS) (notS)* ( c1 | c2 ))* ;
 parcond   : (notS)* ( multicond | op multicond cp ) ;
