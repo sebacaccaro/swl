@@ -1,0 +1,14 @@
+begin
+  let n be 9
+  let i be 1
+  let res be 1
+  if n >= 0 then
+  begin
+    while i <= n do
+    begin
+      mul res by i
+      add 1 to i
+    end
+    print res
+  end
+end
